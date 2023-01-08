@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Recipe Creation{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Title</label>
+                        <span class="text-danger">{{ form.title.errors }}</span>
+                        {{ form.title }}
+                    </div>
+                    <!--  <div class="mb-3">-->
+                    <!--    <label for="exampleInputPassword1" class="form-label">Author</label>-->
+                    <!--    {{ form.author }}-->
+                    <!--  </div>-->
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="exampleCheck1">Tags</label>
+                        {{ form.tags }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

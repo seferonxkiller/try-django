@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+
+{%block title%} Edit {%endblock%}
+
+{%block content%}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="title">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+        </div>
+     <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+</form>
+
+
+    <div>
+<!--        <button type="submit">Edit</button>-->
+<!--        <button class="btn btn-secondary"  type="submit">Edit</button>-->
+<!--        <button class="btn btn-primary" type="submit">-->
+<!--            Edit-->
+<!--        </button>-->
+
+    </div>
+
+</form>
+{% endblock %}
+

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Articles{% endblock %}
+
+
+
+{% block content %}
+    <p>
+        <a class="btn btn-link" href="{% url 'article:create' %}">add new adress</a>
+    </p>
+
+    <div class="search-div">
+        <form class="search-form p-3" action="{% url 'article:list' %}">
+            <div>
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="exampleFormControlInput1" class="form-label">Search</label>
+                    </div>
+                    <div class="col-auto">
+                        <input name="q" autocomplete="off" type="search" class="form-control"
+                               id="exampleFormControlInput1"
+                               placeholder="search....">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Search</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <ol class="article_list">
+            {% for object in object_list %}
+                <li>
+                    <a href="{% url 'article:detail' object.slug %}">{{ object.title }} ({{ object.id }})</a>
+                    <a href="{% url 'article:edit' object.slug %}">Edit</a>
+                    <a href="{% url 'article:delete' object.slug %}" style="color: red">Delete</a>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+{% endblock %}

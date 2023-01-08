@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Recipe delete{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="card">
+                <div class="card-body color-danger">
+                    Siz rostanham <strong>{{ object.title }}</strong>ni ochirmoqchimisiz
+                </div>
+            </div>
+            <div class="button-group mt-3">
+                <a href="{% url 'recipes:recipe_detail' object.recipe.slug %}" class="btn btn-secondary">Yoq</a>
+                <button type="submit" class="btn btn-danger">Ha</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

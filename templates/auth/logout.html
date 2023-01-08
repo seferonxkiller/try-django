@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+
+  <form method="post" class="login">
+    {% csrf_token %}
+    <h1>Rostdan ham chiqib ketmoqchimisiz</h1>
+    <div>
+        <a class="btn btn-secondary" href=" {% url 'article:list' %}">Yoq</a>
+        <button type="submit" class="btn btn-danger">Ha</button>
+    </div>
+
+  </form>
+{% endblock %}

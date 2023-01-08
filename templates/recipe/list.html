@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Recipe list {% endblock %}
+
+{% block content %}
+    <div class="button-group ">
+        <a href="{% url 'recipes:my_list' %}" class="btn btn-light">My recipes</a>
+        <a href="{% url 'recipes:recipe_create' %}" class="btn btn-link">Add new Recipe list</a>
+        <a href="{% url 'recipes:tag_create' %}" class="btn btn-link">Add new Tag list</a>
+    </div>
+    <div class="search-div mt-3">
+        <form action="{% url 'recipes:list' %}" class="search-form">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <input type="search" autocomplete="off" class="form-control" id="exampleFormControlInput2"
+                           placeholder="search.." name="q">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <ol class="list-group list-group-numbered mt-3">
+                    {% for object in object_list %}
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fm-bold">
+                                    <a class="{% if not object.is_active %}bg-danger{% endif %}"
+                                       href="{% url 'recipes:recipe_detail' object.slug %}">{{ object.title }}</a>
+                                </div>
+                                {{ object.author }}
+                            </div>
+                            <span class="badge bg-primary rounded-pill">{{ object.ingredient.count }}</span>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="col-md-3">
+                <div class="button-group">
+                <a href="?tag=" class="btn btn-outline-dark btn-sm m-1">Hammasi</a>
+                    {% for tag in tags_list %}
+                        <a href="?tag={{ tag.title }}" class="btn btn-outline-dark btn-sm m-1">{{ tag.title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+

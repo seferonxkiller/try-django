@@ -1,0 +1,32 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a href="{% url 'articles:list' %}">
+            <img src="{% static 'image/img.png' %}" alt="">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" href="{% url 'articles:list' %}">Article</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Recipes
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'recipes:list' %}">Recipes</a></li>
+                        <li><a class="dropdown-item" href="{% url 'recipes:tag_list' %}">Tags</a></li>
+                    </ul>
+                </li>
+                <a class="nav-link" href="{% url 'blogs:list' %}">Blogs</a>
+            </div>
+        </div>
+        <div class="profile">
+            {% if request.user.is_authenticated %}
+                <span>{{ request.user }}</span>
+                <span><a href="{% url 'auth:logout' %}"><button class="btn btn-primary">Logout</button></a></span>
+            {% else %}
+                <span><a href="{% url 'auth:login' %}"><button class="btn btn-primary">Login</button></a></span>
+            {% endif %}
+        </div>
+    </div>
+</nav>

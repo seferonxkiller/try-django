@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+  <form method="post" class="login">
+    {% csrf_token %}
+<!--    <div>-->
+<!--      <label for="username">Username:</label>-->
+<!--      <input type="text" required name="username" id="username" placeholder="username...">-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <label for="password">Password:</label>-->
+<!--      <input type="password" required name="password" id="password" placeholder="password...">-->
+<!--    </div>-->
+        {{ form.as_p }}
+    <div>
+      <button class="btn btn-primary" type="submit">
+            Login
+        </button>
+    </div>
+  </form>
+  <p>
+      Agar accountingiz bolmasa, <a class="btn btn-primary" href="{% url 'auth:register' %}">register</a> qismiga oting
+  </p>
+
+{% endblock %}
